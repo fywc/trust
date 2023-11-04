@@ -10,9 +10,11 @@ pub enum State {
 
 pub struct Connection {
     state: State,
+    send: SendSequenceSpace,
+    recv: RecvSequenceSpace,
 }
 
-struct SendSequence {
+struct SendSequenceSpace {
     // send unack
     una: usize,
     // send next
@@ -29,8 +31,15 @@ struct SendSequence {
     iss: usize,
 }
 
-struct RecvSequence {
-    
+struct RecvSequenceSpace {
+    // receive next
+    nxt: usize,
+    // receive window
+    wnd: usize,
+    // receive urgent pointer
+    up: bool,
+    // initial receive sequence number
+    irs: usize,
 }
 
 
